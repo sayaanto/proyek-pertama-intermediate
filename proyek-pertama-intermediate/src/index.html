@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StoryApp</title>
+
+  <link rel="shortcut icon" href="favicon.ico" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <!-- Google Fonts dan Animasi -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip link</a>
+
+  <header>
+  </header>
+  <main id="main-container"></main>
+    <section id="app"></section>
+  </main>
+  <script src="main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.vectorgrid@1.0.0/dist/leaflet.vectorgrid.js"></script>
+  <script>
+    document.querySelectorAll('.skip-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href')?.replace('#', '');
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.setAttribute('tabindex', '-1');
+          target.focus();
+        }
+      });
+    });
+  
+    window.addEventListener('hashchange', () => {
+      const mainContent = document.getElementById('main-content');
+      if (window.location.hash === '#/stories') {
+        mainContent?.focus();
+      }
+    });
+  </script>  
+</body>
+</html>
